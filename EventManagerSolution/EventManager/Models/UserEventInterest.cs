@@ -9,6 +9,7 @@ namespace EventManager.Models
         public ApplicationUser User { get; set; } = null!;
 
         public int EventId { get; set; }
+        [ForeignKey(nameof(EventId))]
         public Event Event { get; set; } = null!;
 
         public InterestLevel InterestLevel { get; set; } // Enum or custom class for interest levels
