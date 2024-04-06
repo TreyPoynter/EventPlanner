@@ -6,16 +6,16 @@
     <div class="jumbotron-background"></div>
     <div class="jumbotron-overlay"></div>
     <div class="jumbotron-text">
-        <p class="display-2 mb-3">Make Your Perfect Event. Everytime.</p>
+        <p class="display-2 mb-5">Make Your Perfect Event. Everytime.</p>
         @if (User.Identity.IsAuthenticated)
         {
-            <a class="btn btn-primary jumbotron-btn p-3">
+            <a class="btn-cool-ocean jumbotron-btn p-3">
                 Create an Event!
             </a>
         }
         else
         {
-            <a class="btn btn-primary jumbotron-btn p-3" asp-area="Identity" asp-page="/Account/Register">
+            <a class="btn-cool-ocean jumbotron-btn p-3" asp-area="Identity" asp-page="/Account/Register">
                 Get Started Here!
             </a>
         }
