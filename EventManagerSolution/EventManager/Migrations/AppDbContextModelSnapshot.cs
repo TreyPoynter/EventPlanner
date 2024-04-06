@@ -174,7 +174,7 @@ namespace EventManager.Migrations
 
                     b.HasIndex("EventId");
 
-                    b.ToTable("UserEventInterest");
+                    b.ToTable("UserEventInterests");
                 });
 
             modelBuilder.Entity("EventManager.Models.Event", b =>
@@ -191,13 +191,13 @@ namespace EventManager.Migrations
             modelBuilder.Entity("EventManager.Models.UserEventInterest", b =>
                 {
                     b.HasOne("EventManager.Models.Event", "Event")
-                        .WithMany("InterestedUsers")
+                        .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EventManager.Models.ApplicationUser", "User")
-                        .WithMany("EventInterests")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -205,16 +205,6 @@ namespace EventManager.Migrations
                     b.Navigation("Event");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("EventManager.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("EventInterests");
-                });
-
-            modelBuilder.Entity("EventManager.Models.Event", b =>
-                {
-                    b.Navigation("InterestedUsers");
                 });
 #pragma warning restore 612, 618
         }

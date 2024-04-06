@@ -8,8 +8,6 @@ namespace EventManager.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            builder.HasMany(u => u.EventInterests)
-                .WithOne(u => u.User);
         }
     }
 }

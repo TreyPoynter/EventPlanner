@@ -13,13 +13,15 @@ namespace EventManager.Data.Configurations
 
             builder
                 .HasOne(e => e.User)
-                .WithMany(u => u.EventInterests)
+                .WithMany()
                 .HasForeignKey(eu => eu.UserId);
 
             builder
                 .HasOne(i => i.Event)
-                .WithMany(e => e.InterestedUsers)
+                .WithMany()
                 .HasForeignKey(ei => ei.EventId);
+
+            builder.Property(e => e.InterestLevel).IsRequired();
         }
     }
 }

@@ -10,12 +10,5 @@ namespace EventManager.Models
         public int TypeId { get; set; }
         [ForeignKey(nameof(TypeId))]
         public EventType Type { get; set; } = null!;
-
-        public ICollection<UserEventInterest> InterestedUsers { get; set; }
-
-        public Event()
-        {
-            InterestedUsers = new HashSet<UserEventInterest>();
-        }
     }
 }

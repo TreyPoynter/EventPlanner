@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventManager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240403163110_AddedTripTypes")]
-    partial class AddedTripTypes
+    [Migration("20240405172518_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("ProductVersion", "8.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -177,7 +177,7 @@ namespace EventManager.Migrations
 
                     b.HasIndex("EventId");
 
-                    b.ToTable("UserEventInterest");
+                    b.ToTable("UserEventInterests");
                 });
 
             modelBuilder.Entity("EventManager.Models.Event", b =>
@@ -194,13 +194,13 @@ namespace EventManager.Migrations
             modelBuilder.Entity("EventManager.Models.UserEventInterest", b =>
                 {
                     b.HasOne("EventManager.Models.Event", "Event")
-                        .WithMany("InterestedUsers")
+                        .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EventManager.Models.ApplicationUser", "User")
-                        .WithMany("EventInterests")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -208,16 +208,6 @@ namespace EventManager.Migrations
                     b.Navigation("Event");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("EventManager.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("EventInterests");
-                });
-
-            modelBuilder.Entity("EventManager.Models.Event", b =>
-                {
-                    b.Navigation("InterestedUsers");
                 });
 #pragma warning restore 612, 618
         }

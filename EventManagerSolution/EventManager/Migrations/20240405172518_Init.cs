@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace EventManager.Migrations
 {
     /// <inheritdoc />
@@ -39,16 +41,16 @@ namespace EventManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Type",
+                name: "EventType",
                 columns: table => new
                 {
-                    TypeId = table.Column<int>(type: "int", nullable: false)
+                    EventTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Type", x => x.TypeId);
+                    table.PrimaryKey("PK_EventType", x => x.EventTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,15 +66,15 @@ namespace EventManager.Migrations
                 {
                     table.PrimaryKey("PK_Events", x => x.EventId);
                     table.ForeignKey(
-                        name: "FK_Events_Type_TypeId",
+                        name: "FK_Events_EventType_TypeId",
                         column: x => x.TypeId,
-                        principalTable: "Type",
-                        principalColumn: "TypeId",
+                        principalTable: "EventType",
+                        principalColumn: "EventTypeId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserEventInterest",
+                name: "UserEventInterests",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -81,19 +83,34 @@ namespace EventManager.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserEventInterest", x => new { x.UserId, x.EventId });
+                    table.PrimaryKey("PK_UserEventInterests", x => new { x.UserId, x.EventId });
                     table.ForeignKey(
-                        name: "FK_UserEventInterest_ApplicationUser_UserId",
+                        name: "FK_UserEventInterests_ApplicationUser_UserId",
                         column: x => x.UserId,
                         principalTable: "ApplicationUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserEventInterest_Events_EventId",
+                        name: "FK_UserEventInterests_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
                         principalColumn: "EventId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "EventType",
+                columns: new[] { "EventTypeId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Wedding" },
+                    { 2, "Birthday Party" },
+                    { 3, "Conference" },
+                    { 4, "Music Concert" },
+                    { 5, "Charity Gala" },
+                    { 6, "Product Launch" },
+                    { 7, "Gathering" },
+                    { 8, "Sports Event" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -102,8 +119,8 @@ namespace EventManager.Migrations
                 column: "TypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserEventInterest_EventId",
-                table: "UserEventInterest",
+                name: "IX_UserEventInterests_EventId",
+                table: "UserEventInterests",
                 column: "EventId");
         }
 
@@ -111,7 +128,7 @@ namespace EventManager.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserEventInterest");
+                name: "UserEventInterests");
 
             migrationBuilder.DropTable(
                 name: "ApplicationUser");
@@ -120,7 +137,7 @@ namespace EventManager.Migrations
                 name: "Events");
 
             migrationBuilder.DropTable(
-                name: "Type");
+                name: "EventType");
         }
     }
 }

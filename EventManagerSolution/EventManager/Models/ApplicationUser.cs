@@ -6,12 +6,5 @@ namespace EventManager.Models
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-
-        public ICollection<UserEventInterest> EventInterests { get; set; }
-
-        public ApplicationUser()
-        {
-            EventInterests = new HashSet<UserEventInterest>();
-        }
     }
 }
