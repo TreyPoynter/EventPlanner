@@ -1,0 +1,38 @@
+﻿.navbar.transparent {
+    color: #fff !important;
+    background-color: transparent !important;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.transparent>div>a {
+    color: #fff !important;
+}
+.transparent>div>div>ul>li>a {
+    color: #fff !important;
+}
+.transparent > div > div > ul > li > form > button {
+    color: #fff !important;
+}
+
+.navbar.white-bg {
+    background-color: white !important;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 575px) {
+    .navbar.transparent {
+        color: #000 !important;
+        background-color: #fff !important;
+        transition: background-color 0.3s ease-in-out;
+    }
+    .transparent > div > a {
+        color: #000 !important;
+    }
+    .transparent > div > div > ul > li > a {
+        color: #000 !important;
+    }
+    .transparent > div > div > ul > li > form > button {
+        color: #000 !important;
+    }
+}
