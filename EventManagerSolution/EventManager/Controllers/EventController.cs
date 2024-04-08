@@ -4,6 +4,7 @@ namespace EventManager.Controllers
 {
     public class EventController : Controller
     {
+        [Route("/Events")]
         public IActionResult Index()
         {
             return View();
