@@ -60,7 +60,6 @@
     border-radius: 5px;
     background: linear-gradient(to right, #15ad86, #01b5df);
     text-decoration: none;
-    transition: background-position 0.5s ease;
 }
     .btn-cool-ocean:hover {
         color: #fff;
