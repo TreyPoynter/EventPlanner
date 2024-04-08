@@ -1,6 +1,7 @@
 ﻿@model Event
 @{
     ViewBag.Title = "Create";
+    var selectList = SelectListHelper.GenerateSelectList(ViewBag.EventTypes, "Name", "EventTypeId");
 }
 
 <div class="jumbotron-container mb-3" id="jumbotron">
@@ -11,7 +12,7 @@
     </div>
 </div>
 <div class="container">
-    <form>
+    <form asp-action="Create" asp-controller="Event" method="post">
         <p class="fs-3 mb-1">Basic Information</p>
         <div class="form-floating mb-2">
             <input asp-for="Name" class="form-control" placeholder="What should we call it by?"/>
@@ -20,6 +21,10 @@
         <div class="form-floating mb-2">
             <input asp-for="Address" class="form-control" placeholder="Where is it?" />
             <label>Address</label>
+        </div>
+        <div class="form-floating mb-2">
+            @Html.DropDownList("EventId", selectList, "Select Event Type", new { @class = "form-control" })
+            <label>Event Type</label>
         </div>
         <div class="form-floating">
             <textarea asp-for="Description" class="form-control" placeholder="Tell us what's it about?"
@@ -60,7 +65,7 @@
                 <input type="file" placeholder="f" id="BANNER_IMG" asp-for="EventBanner"/>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3" asp-controller="Event" asp-action="Create">
+        <button type="submit" class="btn btn-primary mt-3">
             Create
         </button>
     </form>
