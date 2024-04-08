@@ -3,13 +3,13 @@
 }
 
 <div class="jumbotron-container" id="jumbotron">
-    <div class="jumbotron-background"></div>
+    <div class="jumbotron-background hands-up"></div>
     <div class="jumbotron-overlay"></div>
     <div class="jumbotron-text">
         <p class="display-2 mb-5">Make Your Perfect Event. Everytime.</p>
         @if (User.Identity.IsAuthenticated)
         {
-            <a class="btn-cool-ocean jumbotron-btn p-3">
+            <a class="btn-cool-ocean jumbotron-btn p-3" asp-controller="Event" asp-action="Create">
                 Create an Event!
             </a>
         }
