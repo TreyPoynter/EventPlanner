@@ -1,0 +1,55 @@
+﻿@model Event
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="jumbotron-container mb-3" id="jumbotron">
+    <div class="jumbotron-background conference"></div>
+    <div class="jumbotron-overlay"></div>
+    <div class="jumbotron-text">
+        <p class="display-2">Get Your Event Started</p>
+    </div>
+</div>
+<div class="container">
+    <form>
+        <p class="fs-3 mb-1">Basic Information</p>
+        <div class="form-floating mb-2">
+            <input asp-for="Name" class="form-control" placeholder="What should we call it by?"/>
+            <label>Name</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input asp-for="Address" class="form-control" placeholder="Where is it?" />
+            <label>Address</label>
+        </div>
+        <div class="form-floating">
+            <textarea asp-for="Description" class="form-control" placeholder="Tell us what's it about?"
+                style="height: 100px; resize: none;"></textarea>
+            <label>Description</label>
+        </div>
+        <div class="separator"></div>
+        <p class="fs-3 mb-1 align-top">Who's Invited?</p>
+        <div class="d-flex">
+            <div class="form-check me-3 ps-0">
+                @Html.RadioButtonFor(model => model.IsEveryoneInvited, true, new { @id="true"})
+                <label for="true">Everyone</label>
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.IsEveryoneInvited, false, new { @id = "false" })
+                <label for="false">Invite Only</label>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <p class="fs-3 mb-1">Make your Event Standout</p>
+        <div class="d-flex">
+            <div>
+                <p class="mb-0">Upload an Event Icon</p>
+                <input type="file" placeholder="f" id="ICON_IMG" asp-for="EventIcon"/>
+            </div>
+            <div>
+                <p class="mb-0">Upload an Event Banner</p>
+                <input type="file" placeholder="f" id="BANNER_IMG" asp-for="EventBanner"/>
+            </div>
+        </div>
+        
+    </form>
+</div>
