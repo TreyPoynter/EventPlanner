@@ -54,3 +54,16 @@ button.searchButton:active {
     font-size: 15px;
     padding: 24px 46px 24px 26px;
 }
+
+.btn-primary {
+    padding: 10px 25px;
+    /* background: linear-gradient(to right, #15ad86, #01b5df); */
+    border: 0px;
+    /* "to left" / "to right" - affects initial color */
+    background: linear-gradient(to left, #15ad86 50%, #01b5df 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+.btn-primary:hover {
+    background-position: left;
+}
