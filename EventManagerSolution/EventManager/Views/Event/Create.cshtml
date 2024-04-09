@@ -1,4 +1,4 @@
-﻿@model Event
+﻿@model EventViewModel
 @{
     ViewBag.Title = "Create";
     var selectList = SelectListHelper.GenerateSelectList(ViewBag.EventTypes, "Name", "EventTypeId");
@@ -23,7 +23,7 @@
             <label>Address</label>
         </div>
         <div class="form-floating mb-2">
-            @Html.DropDownList("EventId", selectList, "Select Event Type", new { @class = "form-control" })
+            @Html.DropDownList("TypeId", selectList, "Select Event Type", new { @class = "form-control" })
             <label>Event Type</label>
         </div>
         <div class="form-floating">
@@ -58,11 +58,11 @@
         <div class="d-flex row">
             <div class="col-sm-4">
                 <p class="mb-0">Upload an Event Icon</p>
-                <input type="file" placeholder="f" id="ICON_IMG" asp-for="EventIcon"/>
+                <input placeholder="f" id="ICON_IMG" asp-for="BannerImage" accept="image/*" />
             </div>
             <div class="col-sm-8">
                 <p class="mb-0">Upload an Event Banner</p>
-                <input type="file" placeholder="f" id="BANNER_IMG" asp-for="EventBanner"/>
+                <input placeholder="f" id="BANNER_IMG" asp-for="IconImage" accept="image/*" />
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">
