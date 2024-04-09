@@ -7,7 +7,7 @@
     height: 2px; /* Adjust the height of the line as needed */
     width: 100%; /* Make it span the entire width of its container */
     background: linear-gradient(to right, #01b5df 0%, #15ad86 50%, #01b5df 100%);
-    margin: 20px 0; /* Adjust the margin as needed */
+    margin: 20px 0px 10px 0; /* Adjust the margin as needed */
 }
 
 .searchBox {
