@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\eventImages\icons\" />
+    <Folder Include="wwwroot\eventImages\headers\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

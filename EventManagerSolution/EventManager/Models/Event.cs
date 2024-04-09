@@ -19,9 +19,7 @@ namespace EventManager.Models
         public string? Address { get; set; }
         [Required]
         public bool IsEveryoneInvited { get; set; }
-        [Required]
         public string? EventBanner { get; set; }
-        [Required]
         public string? EventIcon { get; set; }
 
         [Required]
