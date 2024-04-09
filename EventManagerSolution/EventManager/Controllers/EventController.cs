@@ -44,8 +44,8 @@ namespace EventManager.Controllers
 
             if (ModelState.IsValid && @event.IconImage != null && @event.BannerImage != null)
             {
-                string bannerPath = await UploadFileAsync(@event.BannerImage, "eventImages/headers");
-                string iconPath = await UploadFileAsync(@event.BannerImage, "eventImages/icons");
+                string bannerPath = await UploadFileAsync(@event.BannerImage, "eventImages\\headers");
+                string iconPath = await UploadFileAsync(@event.BannerImage, "eventImages\\icons");
 
                 Event eventObj = new Event
                 {
@@ -66,6 +66,8 @@ namespace EventManager.Controllers
             return View(@event);
         }
 
+        /* Re-usability :D
+         * TODO : Make a static class*/
         public async Task<string> UploadFileAsync(IFormFile file, string directory)
         {
             string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, directory);
