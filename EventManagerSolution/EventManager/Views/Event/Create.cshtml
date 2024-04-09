@@ -12,7 +12,7 @@
     </div>
 </div>
 <div class="container">
-    <form asp-action="Create" asp-controller="Event" method="post">
+    <form asp-action="Create" enctype="multipart/form-data">
         <p class="fs-3 mb-1">Basic Information</p>
         <div class="form-floating mb-2">
             <input asp-for="Name" class="form-control" placeholder="What should we call it by?"/>
@@ -58,11 +58,11 @@
         <div class="d-flex row">
             <div class="col-sm-4">
                 <p class="mb-0">Upload an Event Icon</p>
-                <input placeholder="f" id="ICON_IMG" asp-for="BannerImage" accept="image/*" />
+                <input placeholder="f" id="ICON_IMG" asp-for="IconImage" accept="image/*" />
             </div>
             <div class="col-sm-8">
                 <p class="mb-0">Upload an Event Banner</p>
-                <input placeholder="f" id="BANNER_IMG" asp-for="IconImage" accept="image/*" />
+                <input placeholder="f" id="BANNER_IMG" asp-for="BannerImage" accept="image/*" />
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">
