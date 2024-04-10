@@ -52,5 +52,10 @@ namespace EventManager.Models.DataLayer
         {
             _dbSet.Update(entity);
         }
+
+        public virtual T? GetById(int id)
+        {
+            return _dbSet.Find(id);
+        }
     }
 }
