@@ -23,7 +23,9 @@
             <label>Address</label>
         </div>
         <div class="form-floating mb-2">
-            @Html.DropDownList("TypeId", selectList, "Select Event Type", new { @class = "form-control" })
+            <select asp-items="selectList" class="form-control" asp-for="TypeId">
+                <option hidden value="">-- Select an Event Type --</option>
+            </select>
             <label>Event Type</label>
         </div>
         <div class="form-floating">
