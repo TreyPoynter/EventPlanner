@@ -45,7 +45,7 @@ namespace EventManager.Controllers
             if (ModelState.IsValid && @event.IconImage != null && @event.BannerImage != null)
             {
                 string bannerPath = await UploadFileAsync(@event.BannerImage, "eventImages\\headers");
-                string iconPath = await UploadFileAsync(@event.BannerImage, "eventImages\\icons");
+                string iconPath = await UploadFileAsync(@event.IconImage, "eventImages\\icons");
 
                 Event eventObj = new Event
                 {
