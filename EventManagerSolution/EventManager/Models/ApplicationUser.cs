@@ -6,5 +6,12 @@ namespace EventManager.Models
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
+
+        public ICollection<Event> Events { get; set; }
+
+        public ApplicationUser()
+        {
+            Events = new List<Event>();
+        }
     }
 }

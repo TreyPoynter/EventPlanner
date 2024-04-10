@@ -33,6 +33,6 @@ namespace EventManager.Models
         [ForeignKey(nameof(UserId))]
         [ValidateNever]
         [NotMapped]
-        public ApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; } = null!;
     }
 }
