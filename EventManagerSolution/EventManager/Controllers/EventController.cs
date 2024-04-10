@@ -60,6 +60,7 @@ namespace EventManager.Controllers
                     EventIcon = Path.GetFileName(@event.IconImage.FileName),
                 };
                 eventsDb.Add(eventObj);
+                eventsDb.Save();
                 return RedirectToAction("Index");
             }
             ViewBag.EventTypes = typesDb.List(new QueryOptions<EventType>());
