@@ -9,6 +9,8 @@ namespace EventManager.Data.Configurations
         public void Configure(EntityTypeBuilder<Event> builder)
         {
             builder.HasOne(e => e.Type).WithMany(t => t.Events);
+            builder.HasOne(e => e.User).WithMany(t => t.Events)
+                .HasForeignKey(e => e.UserId);
         }
     }
 }

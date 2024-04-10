@@ -30,7 +30,7 @@ namespace EventManager.Controllers
         {
             List<Event> events = eventsDb.List(new QueryOptions<Event>()
             {
-                Includes = "Type"
+                Includes = "User, Type"
             }).ToList();
 
             return View(events);
