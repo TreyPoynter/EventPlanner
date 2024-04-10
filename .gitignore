@@ -398,4 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Event Image Folders
-/wwwroot/eventImages/
+/wwwroot/eventImages/headers
+/wwwroot/eventImages/icons
