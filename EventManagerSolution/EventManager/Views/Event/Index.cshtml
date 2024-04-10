@@ -23,7 +23,7 @@
         @foreach(Event eventItem in Model)
         {
             <div class="col-md-5">
-                <a class="card" asp-controller="Event">
+                <a class="card" asp-controller="Event" asp-action="Details" asp-route-id="@eventItem.EventId">
                     <div class="card-img-container mb-0">
                         <img src="~/eventImages/headers/@eventItem.EventBanner" class="card-img-top" alt="..." />
                     </div>
@@ -33,7 +33,7 @@
                         <p class="mb-1">
                             @eventItem.Description
                         </p>
-                        <p class="mb-0"><i class="fa-solid fa-users"></i> 4 interested</p>
+                         @*<p class="mb-0"><i class="fa-solid fa-users"></i> 4 interested</p>*@
                     </div>
                 </a>
             </div>
