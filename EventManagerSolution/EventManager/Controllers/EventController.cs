@@ -28,7 +28,12 @@ namespace EventManager.Controllers
         [Route("/Events")]
         public IActionResult Index()
         {
-            return View();
+            List<Event> events = eventsDb.List(new QueryOptions<Event>()
+            {
+
+            }).ToList();
+
+            return View(events);
         }
         public IActionResult Create()
         {
