@@ -13,14 +13,14 @@ namespace EventManager.Controllers
     {
         private readonly Repository<EventType> typesDb;
         private readonly Repository<UserEventInterest> interestsDb;
-        private readonly Repository<Event> eventsDb;
+        private readonly EventRepository<Event> eventsDb;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public EventController(AppDbContext ctx, IWebHostEnvironment webHostEnvironment)
         {
             typesDb = new Repository<EventType>(ctx);
             interestsDb = new Repository<UserEventInterest>(ctx);
-            eventsDb = new Repository<Event>(ctx);
+            eventsDb = new EventRepository<Event>(ctx);
             _webHostEnvironment = webHostEnvironment;
 
         }
@@ -41,9 +41,8 @@ namespace EventManager.Controllers
 
             return View();
         }
-
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(EventViewModel @event)
+        public async Task<IActionResult> Create(EventViewModel @event)
         {
             @event.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -70,6 +69,13 @@ namespace EventManager.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.EventTypes = typesDb.List(new QueryOptions<EventType>());
+            return View(@event);
+        }
+
+        public IActionResult Details(int id)
+        {
+            Event? @event = eventsDb.GetEventById(id);
+
             return View(@event);
         }
 
