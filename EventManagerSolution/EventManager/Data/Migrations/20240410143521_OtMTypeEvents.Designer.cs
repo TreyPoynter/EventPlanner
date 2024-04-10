@@ -4,6 +4,7 @@ using EventManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventManager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240410143521_OtMTypeEvents")]
+    partial class OtMTypeEvents
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,6 +109,9 @@ namespace EventManager.Migrations
                     b.Property<string>("EventIcon")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EventTypeId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsEveryoneInvited")
                         .HasColumnType("bit");
 
@@ -117,15 +123,12 @@ namespace EventManager.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EventId");
 
-                    b.HasIndex("TypeId");
+                    b.HasIndex("EventTypeId");
 
                     b.ToTable("Events");
                 });
@@ -210,7 +213,7 @@ namespace EventManager.Migrations
                 {
                     b.HasOne("EventManager.Models.EventType", "Type")
                         .WithMany("Events")
-                        .HasForeignKey("TypeId")
+                        .HasForeignKey("EventTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
