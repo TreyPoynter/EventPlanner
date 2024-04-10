@@ -23,8 +23,8 @@ namespace EventManager.Models
         public string? EventIcon { get; set; }
 
         [Required]
-        public int TypeId { get; set; }
-        [ForeignKey(nameof(TypeId))]
+        public int EventTypeId { get; set; }
+        [ForeignKey(nameof(EventTypeId))]
         [ValidateNever]
         [NotMapped]
         public EventType Type { get; set; } = null!;
