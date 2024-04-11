@@ -2,6 +2,7 @@
 using EventManager.Models;
 using EventManager.Models.DataLayer;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace EventManager.Controllers
 {
@@ -15,8 +16,17 @@ namespace EventManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddInterest(InterestLevel interestLevel)
+        public IActionResult AddInterest(InterestLevel interestLevel, int eventId)
         {
+            string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            UserEventInterest userInterest = new()
+            {
+                UserId = userId,
+                EventId = eventId,
+                InterestLevel = interestLevel,
+            };
+
             return View();
         }
     }

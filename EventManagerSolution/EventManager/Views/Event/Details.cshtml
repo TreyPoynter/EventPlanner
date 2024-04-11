@@ -17,11 +17,19 @@
             @(Model.IsEveryoneInvited ? "Public" : "Private") • Coordinated by @Model.Coordinator.FirstName @Model.Coordinator.LastName
        </p>
         <div class="d-flex">
-            <form class="w-50">
-                <button class="btn btn-primary w-75">Interested <i class="fa-regular fa-star ms-2"></i></button>
+            <form class="w-50" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
+                <input value="@InterestLevel.Interested" name="interestLevel" hidden/>
+                <input value="@Model.EventId" name="eventId" />
+                <button class="btn btn-primary w-75" type="submit">
+                    Interested <i class="fa-regular fa-star ms-2"></i>
+                </button>
             </form>
-            <form class="w-50">
-                <button class="btn btn-secondary w-75">Going <i class="fa-solid fa-calendar-check ms-2"></i></button>
+            <form class="w-50" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
+                <input value="@InterestLevel.Going" name="interestLevel" hidden/>
+                <input value="@Model.EventId" name="eventId" />
+                <button class="btn btn-secondary w-75" type="submit">
+                    Going <i class="fa-solid fa-calendar-check ms-2"></i>
+                </button>
             </form>
         </div>
     </div>
