@@ -22,7 +22,6 @@ namespace EventManager.Controllers
             interestsDb = new Repository<UserEventInterest>(ctx);
             eventsDb = new EventRepository<Event>(ctx);
             _webHostEnvironment = webHostEnvironment;
-
         }
 
         [Route("/Events")]
@@ -75,7 +74,7 @@ namespace EventManager.Controllers
         public IActionResult Details(int id)
         {
             Event? @event = eventsDb.GetEventById(id);
-            ViewBag.HostEvents = eventsDb.GetEventsByUser(User.FindFirstValue(ClaimTypes.NameIdentifier)).Count();
+            ViewBag.HostEvents = eventsDb.GetEventsByUser(@event.UserId).Count();
             return View(@event);
         }
 
