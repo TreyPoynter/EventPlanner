@@ -28,7 +28,9 @@
                         <img src="~/eventImages/headers/@eventItem.EventBanner" class="card-img-top" alt="..." />
                     </div>
                     <div class="card-body">
-                        <p class="mb-0"><i class="fa-regular fa-calendar"></i> @eventItem.StartTime</p>
+                        <p class="mb-0"><i class="fa-regular fa-calendar me-2"></i> 
+                            @eventItem.StartTime.Value.ToString("MMMM d yyyy @h:mm tt")
+                        </p>
                         <h5 class="card-title fw-bold mb-0">@eventItem.Name</h5>
                         <p class="mb-1">
                             @eventItem.Description
@@ -38,7 +40,6 @@
                 </a>
             </div>
         }
-        
     </div>
 </div>
 
