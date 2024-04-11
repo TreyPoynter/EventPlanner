@@ -9,7 +9,56 @@
     </div>
     <div class="jumbotron-overlay"></div>
     <div class="jumbotron-text">
+        <p class="fs-4">
+            @Model.StartTime.Value.ToString("dddd MMMM d, yyyy @ h:mm tt")
+        </p>
         <p class="display-2">@Model.Name</p>
-        <p class="fs-4">Coordinated by @Model.User.FirstName @Model.User.LastName</p>
+        <p class="fs-4">
+            @(Model.IsEveryoneInvited ? "Public" : "Private") • Coordinated by @Model.Coordinator.FirstName @Model.Coordinator.LastName
+       </p>
+        <div class="d-flex">
+            <form class="w-50">
+                <button class="btn btn-primary w-75">Interested <i class="fa-regular fa-star ms-2"></i></button>
+            </form>
+            <form class="w-50">
+                <button class="btn btn-secondary w-75">Going <i class="fa-solid fa-calendar-check ms-2"></i></button>
+            </form>
+        </div>
     </div>
+</div>
+<div class="container">
+    <div>
+        <h3 class="display-6">What to expect</h3>
+        <p class="fs-4">@Model.Description</p>
+    </div>
+    <div class="separator"></div>
+    <div>
+        <h3 class="display-6">Meet your host</h3>
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <i class="fa-solid fa-user mb-3" id="host"></i>
+                <div class="fs-3">
+                    @ViewBag.HostEvents event@(@ViewBag.HostEvents <= 1 ? "" : "s") hosted • 
+                    @Model.Coordinator.FirstName @Model.Coordinator.LastName
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator"></div>
+    <div>
+        <h3 class="display-6">About the Venue</h3>
+        <div class="d-flex fs-2 align-items-center mb-3">
+            <i class="fa-solid fa-diamond-turn-right"></i>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=@Model.Address" class="ms-3 text-dark">
+                @Model.Address
+            </a>
+        </div>
+        <div class="d-flex fs-2 align-items-center">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:@Model.PhoneNumber" class="ms-3 text-dark">
+                @Model.PhoneNumber
+            </a>
+        </div>
+    </div>
+    <div class="separator"></div>
 </div>
