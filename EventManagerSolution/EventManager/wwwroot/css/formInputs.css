@@ -64,6 +64,14 @@ button.searchButton:active {
     background-size: 200%;
     transition: .5s ease-out;
 }
+.btn-secondary {
+    padding: 10px 25px;
+    border: 0px;
+    background: #01b5df;
+}
+.btn-secondary:hover {
+    background: #0f98b8;
+}
 .btn-primary:hover {
     background-position: left;
 }
