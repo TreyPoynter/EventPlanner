@@ -30,7 +30,7 @@ namespace EventManager.Controllers
         {
             List<Event> events = eventsDb.List(new QueryOptions<Event>()
             {
-                Includes = "User, Type"
+                Includes = "Coordinator, Type"
             }).ToList();
 
             return View(events);
@@ -75,7 +75,7 @@ namespace EventManager.Controllers
         public IActionResult Details(int id)
         {
             Event? @event = eventsDb.GetEventById(id);
-
+            ViewBag.HostEvents = eventsDb.GetEventsByUser(User.FindFirstValue(ClaimTypes.NameIdentifier)).Count();
             return View(@event);
         }
 

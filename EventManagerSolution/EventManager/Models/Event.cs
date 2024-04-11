@@ -18,6 +18,9 @@ namespace EventManager.Models
         [Required]
         public string? Address { get; set; }
         [Required]
+        [Phone]
+        public string? PhoneNumber { get; set; }
+        [Required]
         public bool IsEveryoneInvited { get; set; }
         public string? EventBanner { get; set; }
         public string? EventIcon { get; set; }
@@ -33,6 +36,6 @@ namespace EventManager.Models
         [ForeignKey(nameof(UserId))]
         [ValidateNever]
         [NotMapped]
-        public ApplicationUser User { get; set; } = null!;
+        public ApplicationUser Coordinator { get; set; } = null!;
     }
 }

@@ -12,9 +12,14 @@ namespace EventManager.Models.DataLayer
             _events = ctx.Set<Event>();
         }
 
+        public IEnumerable<Event> GetEventsByUser(string userId)
+        {
+            return _events.Where(e => e.UserId == userId);
+        }
+
         public Event? GetEventById(int id)
         {
-            return _events.Include(e => e.User).Include(e => e.Type)
+            return _events.Include(e => e.Coordinator).Include(e => e.Type)
                 .FirstOrDefault(e => e.EventId == id);
         }
     }
