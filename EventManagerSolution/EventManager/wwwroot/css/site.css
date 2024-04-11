@@ -58,3 +58,13 @@ a.card {
     text-decoration: none;
     color: #000;
 }
+
+#host {
+    font-size: 150px;
+}
+
+@media screen and (max-width: 400px) {
+    #host {
+        font-size: 90px;
+    }
+}
