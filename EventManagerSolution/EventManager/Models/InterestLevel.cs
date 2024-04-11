@@ -2,8 +2,7 @@
 {
     public enum InterestLevel
     {
-        Going = 0,
-        Interested,
-        Not_Going
+        Interested = 0,
+        Going
     }
 }
