@@ -43,17 +43,14 @@ namespace EventManager.Controllers
         {
             @event.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (ModelState.IsValid && @event.IconImage != null && @event.BannerImage != null)
+            if (ModelState.IsValid && @event.BannerImage != null)
             {
                 string bannerPath = await FileHelper.UploadFileAsync(@event.BannerImage, 
                     "eventImages\\headers", _webHostEnvironment);
-                string iconPath = await FileHelper.UploadFileAsync(@event.IconImage, 
-                    "eventImages\\icons", _webHostEnvironment);
 
                 Event eventObj = new Event
                 {
                     EventBanner = Path.GetFileName(@event.BannerImage.FileName),
-                    EventIcon = Path.GetFileName(@event.IconImage.FileName),
                 };
                 eventObj = @event;
                 eventsDb.Add(eventObj);

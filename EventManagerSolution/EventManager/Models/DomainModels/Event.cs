@@ -22,7 +22,6 @@ namespace EventManager.Models.DomainModels
         [Required]
         public bool IsEveryoneInvited { get; set; }
         public string? EventBanner { get; set; }
-        public string? EventIcon { get; set; }
 
         [Required]
         public int TypeId { get; set; }

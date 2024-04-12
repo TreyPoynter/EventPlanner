@@ -7,7 +7,5 @@ namespace EventManager.Models.DomainModels
     {
         [ValidateNever]
         public IFormFile BannerImage { get; set; }
-        [ValidateNever]
-        public IFormFile IconImage { get; set; }
     }
 }
