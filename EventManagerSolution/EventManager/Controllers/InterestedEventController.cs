@@ -19,7 +19,7 @@ namespace EventManager.Controllers
         public IActionResult AddInterest(InterestLevel interestLevel, int eventId)
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            
             UserEventInterest userInterest = new()
             {
                 UserId = userId,
@@ -27,7 +27,10 @@ namespace EventManager.Controllers
                 InterestLevel = interestLevel,
             };
 
-            return View();
+            _userInterestLevelDb.Add(userInterest);
+            _userInterestLevelDb.Save();
+
+            return RedirectToAction("Details", "Event", new { id = eventId});
         }
     }
 }

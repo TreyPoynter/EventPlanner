@@ -74,6 +74,8 @@ namespace EventManager.Controllers
         public IActionResult Details(int id)
         {
             Event? @event = eventsDb.GetEventById(id);
+            ViewBag.IsRSVP = interestsDb.List(new QueryOptions<UserEventInterest>());
+            ViewBag.LoggedInUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.HostEvents = eventsDb.GetEventsByUser(@event.UserId).Count();
             return View(@event);
         }
