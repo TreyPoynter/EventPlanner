@@ -40,7 +40,6 @@ body {
 }
 
 .card-img.container>img {
-    
     left: 50%;
     margin-left: -200px;
     position: absolute;

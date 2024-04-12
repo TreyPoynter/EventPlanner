@@ -18,7 +18,7 @@
        </p>
         
         <div class="d-flex">
-            @if (User.Identity.IsAuthenticated && ViewBag.LoggedInUser != Model.UserId)
+            @if (User.Identity.IsAuthenticated && ViewBag.LoggedInUser != Model.UserId && !ViewBag.IsRSVP)
             {
                 <form class="w-50" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
                     <input value="@InterestLevel.Interested" name="interestLevel" hidden />

@@ -12,14 +12,14 @@ namespace EventManager.Controllers
     public class EventController : Controller
     {
         private readonly Repository<EventType> typesDb;
-        private readonly Repository<UserEventInterest> interestsDb;
+        private readonly UserEventInterestRepo<UserEventInterest> interestsDb;
         private readonly EventRepository<Event> eventsDb;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public EventController(AppDbContext ctx, IWebHostEnvironment webHostEnvironment)
         {
             typesDb = new Repository<EventType>(ctx);
-            interestsDb = new Repository<UserEventInterest>(ctx);
+            interestsDb = new UserEventInterestRepo<UserEventInterest>(ctx);
             eventsDb = new EventRepository<Event>(ctx);
             _webHostEnvironment = webHostEnvironment;
         }
@@ -73,9 +73,10 @@ namespace EventManager.Controllers
 
         public IActionResult Details(int id)
         {
+            string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
             Event? @event = eventsDb.GetEventById(id);
-            ViewBag.IsRSVP = interestsDb.List(new QueryOptions<UserEventInterest>());
-            ViewBag.LoggedInUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.IsRSVP = interestsDb.UserIsInterested(id, userId);
+            ViewBag.LoggedInUser = userId;
             ViewBag.HostEvents = eventsDb.GetEventsByUser(@event.UserId).Count();
             return View(@event);
         }
