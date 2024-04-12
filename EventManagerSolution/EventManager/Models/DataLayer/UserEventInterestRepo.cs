@@ -12,9 +12,16 @@ namespace EventManager.Models.DataLayer
             _interests = ctx.Set<UserEventInterest>();
         }
 
+        public UserEventInterest? FindByIds(int eventId, string? userId)
+        {
+            return _interests.FirstOrDefault(i => i.UserId == userId && i.EventId == eventId);
+        }
+
         public bool UserIsInterested(int eventId, string? userId)
         {
-            return _interests.All(x => x.UserId == userId && x.EventId == eventId);
+            UserEventInterest? interest = _interests.FirstOrDefault(x => x.UserId == userId && x.EventId == eventId);
+
+            return interest != null;
         }
 
     }
