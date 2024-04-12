@@ -18,24 +18,24 @@
        </p>
         
         <div class="d-flex">
-            @if (User.Identity.IsAuthenticated)
+            @if (User.Identity.IsAuthenticated && ViewBag.LoggedInUser != Model.UserId)
             {
                 <form class="w-50" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
                     <input value="@InterestLevel.Interested" name="interestLevel" hidden />
-                    <input value="@Model.EventId" name="eventId" />
+                    <input value="@Model.EventId" name="eventId" hidden/>
                     <button class="btn btn-primary w-75" type="submit">
                         Interested <i class="fa-regular fa-star ms-2"></i>
                     </button>
                 </form>
                 <form class="w-50" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
                     <input value="@InterestLevel.Going" name="interestLevel" hidden />
-                    <input value="@Model.EventId" name="eventId" />
+                    <input value="@Model.EventId" name="eventId" hidden/>
                     <button class="btn btn-secondary w-75" type="submit">
                         Going <i class="fa-solid fa-calendar-check ms-2"></i>
                     </button>
                 </form>
             }
-            else
+            else if (!User.Identity.IsAuthenticated)
             {
 
                 <a class="btn-cool-ocean jumbotron-btn p-3 w-100" asp-area="Identity" asp-page="/Account/Register">
@@ -72,12 +72,16 @@
                 @Model.Address
             </a>
         </div>
-        <div class="d-flex fs-2 align-items-center">
-            <i class="fa-solid fa-phone"></i>
-            <a href="tel:@Model.PhoneNumber" class="ms-3 text-dark">
-                @Model.PhoneNumber
-            </a>
-        </div>
+        @if (!String.IsNullOrWhiteSpace(Model.PhoneNumber))
+        {
+            <div class="d-flex fs-2 align-items-center">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:@Model.PhoneNumber" class="ms-3 text-dark">
+                    @Model.PhoneNumber
+                </a>
+            </div>
+        }
+        
     </div>
     <div class="separator"></div>
 </div>

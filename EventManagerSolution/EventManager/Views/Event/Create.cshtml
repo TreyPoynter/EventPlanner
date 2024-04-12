@@ -20,7 +20,11 @@
         </div>
         <div class="form-floating mb-2">
             <input asp-for="Address" class="form-control" placeholder="Where is it?" />
-            <label>Address</label>
+            <label>Venue Address</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input asp-for="PhoneNumber" class="form-control" placeholder="Contact?" />
+            <label>Venue Number (Optional)</label>
         </div>
         <div class="form-floating mb-2">
             <select asp-items="selectList" class="form-control" asp-for="TypeId">
