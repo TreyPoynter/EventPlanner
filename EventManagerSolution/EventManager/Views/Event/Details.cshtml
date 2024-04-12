@@ -9,11 +9,11 @@
     </div>
     <div class="jumbotron-overlay"></div>
     <div class="jumbotron-text">
-        <p class="fs-4">
+       <p class="fs-4">
             @Model.StartTime.Value.ToString("dddd MMMM d, yyyy @ h:mm tt")
-        </p>
-        <p class="display-2">@Model.Name</p>
-        <p class="fs-4">
+       </p>
+       <p class="display-2">@Model.Name</p>
+       <p class="fs-4">
             @(Model.IsEveryoneInvited ? "Public" : "Private") • Coordinated by @Model.Coordinator.FirstName @Model.Coordinator.LastName
        </p>
         
@@ -23,7 +23,7 @@
             <form class="w-50" asp-action="NotInterested" asp-controller="InterestedEvent" method="post">
                 <input value="@Model.EventId" name="eventId" hidden />
                 <button class="btn btn-danger w-75" type="submit">
-                        No Longer Interested <i class="fa-regular fa-calendar-xmark ms-2"></i>
+                        No Longer @ViewBag.InterestStatus <i class="fa-regular fa-calendar-xmark ms-2"></i>
                 </button>
             </form>
             }

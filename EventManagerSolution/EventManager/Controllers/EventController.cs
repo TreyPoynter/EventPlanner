@@ -65,7 +65,12 @@ namespace EventManager.Controllers
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
             Event? @event = eventsDb.GetEventById(id);
-            ViewBag.IsRSVP = interestsDb.UserIsInterested(id, userId);
+            UserEventInterest? interest = interestsDb.FindByIds(id, userId);
+            ViewBag.IsRSVP = interest != null;
+
+            if (ViewBag.IsRSVP)
+                ViewBag.InterestStatus = interest.InterestLevel;
+
             ViewBag.LoggedInUser = userId;
             ViewBag.HostEvents = eventsDb.GetEventsByUser(@event.UserId).Count();
             return View(@event);
