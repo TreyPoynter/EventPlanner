@@ -1,10 +1,8 @@
 ﻿using EventManager.Data;
 using EventManager.Models.DataLayer;
 using EventManager.Models.DomainModels;
-using Microsoft.AspNetCore.Hosting;
+using EventManager.Utilities;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Reflection;
 using System.Security.Claims;
 
 namespace EventManager.Controllers
@@ -47,22 +45,17 @@ namespace EventManager.Controllers
 
             if (ModelState.IsValid && @event.IconImage != null && @event.BannerImage != null)
             {
-                string bannerPath = await UploadFileAsync(@event.BannerImage, "eventImages\\headers");
-                string iconPath = await UploadFileAsync(@event.IconImage, "eventImages\\icons");
+                string bannerPath = await FileHelper.UploadFileAsync(@event.BannerImage, 
+                    "eventImages\\headers", _webHostEnvironment);
+                string iconPath = await FileHelper.UploadFileAsync(@event.IconImage, 
+                    "eventImages\\icons", _webHostEnvironment);
 
                 Event eventObj = new Event
                 {
-                    Name = @event.Name,
-                    Description = @event.Description,
-                    Address = @event.Address,
-                    StartTime = @event.StartTime,
-                    EndTime = @event.EndTime,
-                    IsEveryoneInvited = @event.IsEveryoneInvited,
-                    UserId = @event.UserId,
-                    TypeId = @event.TypeId,
                     EventBanner = Path.GetFileName(@event.BannerImage.FileName),
                     EventIcon = Path.GetFileName(@event.IconImage.FileName),
                 };
+                eventObj = @event;
                 eventsDb.Add(eventObj);
                 eventsDb.Save();
                 return RedirectToAction("Index");
@@ -79,25 +72,6 @@ namespace EventManager.Controllers
             ViewBag.LoggedInUser = userId;
             ViewBag.HostEvents = eventsDb.GetEventsByUser(@event.UserId).Count();
             return View(@event);
-        }
-
-        /* Re-usability :D
-         * TODO : Make a static class*/
-        public async Task<string> UploadFileAsync(IFormFile file, string directory)
-        {
-            string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, directory);
-            string fileName = Path.GetFileName(file.FileName);
-            string filePath = Path.Combine(uploadDir, fileName);
-
-            // Ensure directory exists
-            Directory.CreateDirectory(uploadDir);
-
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(fileStream);
-            }
-
-            return filePath;
         }
     }
 }
