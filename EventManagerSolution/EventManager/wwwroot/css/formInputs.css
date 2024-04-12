@@ -55,8 +55,11 @@ button.searchButton:active {
     padding: 24px 46px 24px 26px;
 }
 
-.btn-primary {
+.btn {
     padding: 10px 25px;
+}
+
+.btn-primary {
     /* background: linear-gradient(to right, #15ad86, #01b5df); */
     border: 0px;
     /* "to left" / "to right" - affects initial color */
@@ -65,7 +68,6 @@ button.searchButton:active {
     transition: .5s ease-out;
 }
 .btn-secondary {
-    padding: 10px 25px;
     border: 0px;
     background: #01b5df;
 }

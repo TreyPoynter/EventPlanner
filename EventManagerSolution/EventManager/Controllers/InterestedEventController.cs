@@ -8,11 +8,11 @@ namespace EventManager.Controllers
 {
     public class InterestedEventController : Controller
     {
-        Repository<UserEventInterest> _userInterestLevelDb;
+        UserEventInterestRepo<UserEventInterest> _interestDb;
 
         public InterestedEventController(AppDbContext ctx)
         {
-            _userInterestLevelDb = new Repository<UserEventInterest>(ctx);
+            _interestDb = new UserEventInterestRepo<UserEventInterest>(ctx);
         }
 
         [HttpPost]
@@ -27,10 +27,24 @@ namespace EventManager.Controllers
                 InterestLevel = interestLevel,
             };
 
-            _userInterestLevelDb.Add(userInterest);
-            _userInterestLevelDb.Save();
+            _interestDb.Add(userInterest);
+            _interestDb.Save();
 
             return RedirectToAction("Details", "Event", new { id = eventId});
+        }
+
+        [HttpPost]
+        public IActionResult NotInterested(int eventId)
+        {
+            string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            UserEventInterest? foundInterest = _interestDb.FindByIds(eventId, userId);
+
+            if(foundInterest != null)
+            {
+                _interestDb.Delete(foundInterest);
+                _interestDb.Save();
+            }
+            return RedirectToAction("Details", "Event", new { id = eventId });
         }
     }
 }
