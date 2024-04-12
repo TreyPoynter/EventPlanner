@@ -1,6 +1,6 @@
 ﻿using EventManager.Data;
-using EventManager.Models;
 using EventManager.Models.DataLayer;
+using EventManager.Models.DomainModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
