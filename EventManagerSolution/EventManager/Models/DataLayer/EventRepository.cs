@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventManager.Models.DataLayer
 {
-    public class EventRepository<T> : Repository<T> where T : class
+    public class EventRepository<T> : Repository<T> where T : Event
     {
         private readonly DbSet<Event> _events;
 

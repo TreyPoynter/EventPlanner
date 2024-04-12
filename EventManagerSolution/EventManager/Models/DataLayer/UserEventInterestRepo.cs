@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventManager.Models.DataLayer
 {
-    public class UserEventInterestRepo<T> : Repository<T> where T : class
+    public class UserEventInterestRepo<T> : Repository<T> where T : UserEventInterest
     {
         private readonly DbSet<UserEventInterest> _interests;
         public UserEventInterestRepo(AppDbContext ctx) : base(ctx)
