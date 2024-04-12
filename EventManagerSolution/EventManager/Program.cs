@@ -1,5 +1,5 @@
 using EventManager.Data;
-using EventManager.Models;
+using EventManager.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

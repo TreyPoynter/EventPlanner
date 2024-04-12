@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EventManager.Models
+namespace EventManager.Models.DomainModels
 {
     public class UserEventInterest
     {

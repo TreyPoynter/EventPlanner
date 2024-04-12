@@ -4,7 +4,7 @@
 
 using System;
 using System.Threading.Tasks;
-using EventManager.Models;
+using EventManager.Models.DomainModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

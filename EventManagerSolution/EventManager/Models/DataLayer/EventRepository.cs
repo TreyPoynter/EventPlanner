@@ -1,4 +1,5 @@
 ﻿using EventManager.Data;
+using EventManager.Models.DomainModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventManager.Models.DataLayer

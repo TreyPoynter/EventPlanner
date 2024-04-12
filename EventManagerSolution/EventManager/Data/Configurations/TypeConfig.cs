@@ -1,4 +1,4 @@
-﻿using EventManager.Models;
+﻿using EventManager.Models.DomainModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
