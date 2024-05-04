@@ -35,6 +35,9 @@
 .conference {
     background-image: url('../images/conference-room.jpg');
 }
+.event-badges {
+    background-image: url('../images/register.jpg');
+}
 
 .jumbotron-overlay {
     position: absolute;
