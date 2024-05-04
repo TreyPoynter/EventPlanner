@@ -2,6 +2,7 @@
 using EventManager.Models.DataLayer;
 using EventManager.Models.DomainModels;
 using EventManager.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -32,6 +33,7 @@ namespace EventManager.Controllers
 
             return View(events);
         }
+        [Authorize]
         public IActionResult Create()
         {
             ViewBag.EventTypes = typesDb.List(new QueryOptions<EventType>());
@@ -39,6 +41,7 @@ namespace EventManager.Controllers
             return View();
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(EventViewModel @event)
         {
             @event.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
