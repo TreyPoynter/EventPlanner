@@ -77,3 +77,23 @@ button.searchButton:active {
 .btn-primary:hover {
     background-position: left;
 }
+
+#account-links > .nav-item > a {
+    color: #02b5dc !important;
+}
+#account-links > .nav-item > a.nav-link.active {
+    color: #fff !important;
+}
+
+.form-check-input[type="checkbox"]:checked {
+    background-color: #01b5df;
+    border-color: #01b5df !important;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(1, 181, 223, 0.6); /* Change the focus border color to #01b5df with transparency */
+}
+
+.form-check-input[type="checkbox"]:not(:checked) {
+    background-color: white;
+}

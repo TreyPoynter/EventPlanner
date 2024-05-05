@@ -38,6 +38,9 @@
 .event-badges {
     background-image: url('../images/register.jpg');
 }
+.computer {
+    background-image: url('../images/computer.jpg');
+}
 
 .jumbotron-overlay {
     position: absolute;
@@ -62,7 +65,7 @@
     letter-spacing: 3px;
 }
 
-.btn-cool-ocean {
+.btn-cool-ocean, .nav-link.active {
     color: #fff;
     border-radius: 5px;
     background: linear-gradient(to right, #15ad86, #01b5df);
