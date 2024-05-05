@@ -37,8 +37,9 @@ namespace EventManager.Controllers
         public IActionResult Create()
         {
             ViewBag.EventTypes = typesDb.List(new QueryOptions<EventType>());
+            EventViewModel eventVM = new EventViewModel();
 
-            return View();
+            return View(eventVM);
         }
         [HttpPost]
         [Authorize]
