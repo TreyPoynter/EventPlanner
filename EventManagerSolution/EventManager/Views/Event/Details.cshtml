@@ -29,20 +29,28 @@
             }
             else if (User.Identity.IsAuthenticated && ViewBag.LoggedInUser != Model.UserId)
             {
-                <form class="w-50" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
-                    <input value="@InterestLevel.Interested" name="interestLevel" hidden />
-                    <input value="@Model.EventId" name="eventId" hidden/>
-                    <button class="btn btn-primary w-75" type="submit">
-                        Interested <i class="fa-regular fa-star ms-2"></i>
-                    </button>
-                </form>
-                <form class="w-50" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
-                    <input value="@InterestLevel.Going" name="interestLevel" hidden />
-                    <input value="@Model.EventId" name="eventId" hidden/>
-                    <button class="btn btn-secondary w-75" type="submit">
-                        Going <i class="fa-solid fa-calendar-check ms-2"></i>
-                    </button>
-                </form>
+                <div class="row w-100">
+                    <div class="col-md-6">
+                        <form class="w-100" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
+                            <input value="@InterestLevel.Interested" name="interestLevel" hidden />
+                            <input value="@Model.EventId" name="eventId" hidden />
+                            <button class="btn btn-primary w-75" type="submit">
+                                Interested <i class="fa-regular fa-star ms-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form class="w-100" asp-action="AddInterest" asp-controller="InterestedEvent" method="post">
+                            <input value="@InterestLevel.Going" name="interestLevel" hidden />
+                            <input value="@Model.EventId" name="eventId" hidden />
+                            <button class="btn btn-secondary w-75" type="submit">
+                                Going <i class="fa-solid fa-calendar-check ms-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                
             }
             else if (!User.Identity.IsAuthenticated)
             {
@@ -64,7 +72,10 @@
         <h3 class="display-6">Meet your host</h3>
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <i class="fa-solid fa-user mb-3" id="host"></i>
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor" viewBox="0 0 24 24" style="width: 150px; height: 150px;">
+                    <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd" />
+                </svg>
+
                 <div>
                     <p class="fs-3 mb-0">@Model.Coordinator.FirstName @Model.Coordinator.LastName</p>
                     <p class="fs-5 mb-0 text-secondary">@ViewBag.HostEvents event@(@ViewBag.HostEvents <= 1 ? "" : "s") hosted</p>
