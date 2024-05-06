@@ -4,13 +4,16 @@
     transition: background-color 0.3s ease-in-out;
 }
 
-.transparent>div>a {
+.transparent > div > a {
     color: #fff !important;
 }
 .transparent>div>div>ul>li>a {
     color: #fff !important;
 }
 .transparent > div > div > ul > li > form > button {
+    color: #fff !important;
+}
+.transparent > div > div > ul > li > .dropdown > button {
     color: #fff !important;
 }
 
